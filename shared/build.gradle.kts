@@ -9,7 +9,7 @@ kotlin {
     android() {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "11"
             }
         }
     }
@@ -27,8 +27,12 @@ kotlin {
     sourceSets {
         val commonTest by getting {
             dependencies {
+                implementation(kotlin("test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation("org.mockito:mockito-core:5.4.0")
+                implementation("org.mockito:mockito-inline:4.7.0")
+                implementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
             }
         }
         val androidUnitTest by getting {
@@ -48,7 +52,7 @@ android {
     }
     namespace = "com.jetbrains.android"
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
